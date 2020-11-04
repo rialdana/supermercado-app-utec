@@ -1,5 +1,6 @@
-package com.utec.supermercadoapp;
+package com.utec.supermercadoapp.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
+import com.utec.supermercadoapp.R;
 import com.utec.supermercadoapp.database.SupermarketDao;
 import com.utec.supermercadoapp.database.SupermarketRoomDatabase;
 import com.utec.supermercadoapp.database.entities.User;
@@ -84,7 +86,8 @@ public class LoginActivity extends AppCompatActivity {
             if (user == null) {
                 showSnackbar("Usuario no encontrado");
             } else {
-                showSnackbar("Usuario encontrado");
+                Intent intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
             }
         });
     }
