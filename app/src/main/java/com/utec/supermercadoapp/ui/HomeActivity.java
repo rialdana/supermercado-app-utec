@@ -18,18 +18,18 @@ public class HomeActivity extends AppCompatActivity implements OnTestCreateSomet
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        MaterialButton openFragmentButton = findViewById(R.id.button_open_test_fragment);
+        //MaterialButton openFragmentButton = findViewById(R.id.button_open_test_fragment);
 
-        openFragmentButton.setOnClickListener(v -> {
+       // openFragmentButton.setOnClickListener(v -> {
 
             /**
              * Creando el fragment y mostrandolo, esta activity debe implementar la interfaz
              * OnTestCreateSomethingListener, si no la implementa la app podria crashear
              * porque es necesaria en el fragment para poderse comunicar de vuelta
              */
-            TestCreateSomethingFragment fragment = TestCreateSomethingFragment.newInstance();
-            fragment.show(getSupportFragmentManager(), fragment.getTag());
-        });
+           // TestCreateSomethingFragment fragment = TestCreateSomethingFragment.newInstance();
+          //  fragment.show(getSupportFragmentManager(), fragment.getTag());
+      //  });
     }
 
     /**
