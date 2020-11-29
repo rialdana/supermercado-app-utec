@@ -44,8 +44,11 @@ public class HomeActivity extends AppCompatActivity implements categoriasListene
              * OnTestCreateSomethingListener, si no la implementa la app podria crashear
              * porque es necesaria en el fragment para poderse comunicar de vuelta
              */
-           TestCreateSomethingFragment fragment = TestCreateSomethingFragment.newInstance();
-           fragment.show(getSupportFragmentManager(), fragment.getTag());
+           //TestCreateSomethingFragment fragment = TestCreateSomethingFragment.newInstance();
+          // fragment.show(getSupportFragmentManager(), fragment.getTag());
+
+           Fragment_Categoria fragment_categoria = Fragment_Categoria.newInstance();
+           fragment_categoria.show(getSupportFragmentManager(), fragment_categoria.getTag());
        });
 
 
@@ -55,8 +58,11 @@ public class HomeActivity extends AppCompatActivity implements categoriasListene
              * OnTestCreateSomethingListener, si no la implementa la app podria crashear
              * porque es necesaria en el fragment para poderse comunicar de vuelta
              */
-            TestCreateSomethingFragment fragment = TestCreateSomethingFragment.newInstance();
-            fragment.show(getSupportFragmentManager(), fragment.getTag());
+            //TestCreateSomethingFragment fragment = TestCreateSomethingFragment.newInstance();
+            //fragment.show(getSupportFragmentManager(), fragment.getTag());
+
+            Fragment_Sucursal fragment_sucursal = Fragment_Sucursal.newInstance();
+            fragment_sucursal.show(getSupportFragmentManager(), fragment_sucursal.getTag());
         });
     }
 

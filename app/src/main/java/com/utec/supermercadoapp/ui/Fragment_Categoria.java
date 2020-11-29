@@ -15,7 +15,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.utec.supermercadoapp.R;
 import com.utec.supermercadoapp.listeners.OnTestCreateSomethingListener;
 
-public class Fragment_Sucursal extends BottomSheetDialogFragment {
+public class Fragment_Categoria extends BottomSheetDialogFragment {
 
     /**
      * Hay que definir un listener, este listener es la interfaz mediante la cual nos vamos
@@ -25,11 +25,11 @@ public class Fragment_Sucursal extends BottomSheetDialogFragment {
 
     //private Button mButtonCreateSomething;
 
-    private Fragment_Sucursal() {
+    private Fragment_Categoria() {
     }
 
-    public static Fragment_Sucursal newInstance() {
-        return new Fragment_Sucursal();
+    public static Fragment_Categoria newInstance() {
+        return new Fragment_Categoria();
     }
 
     /**
@@ -62,7 +62,7 @@ public class Fragment_Sucursal extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment__sucursal, container, false);
+        return inflater.inflate(R.layout.fragment__categoria, container, false);
     }
 
     /**
