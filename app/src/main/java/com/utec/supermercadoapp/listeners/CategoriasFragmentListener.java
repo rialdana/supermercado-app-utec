@@ -6,7 +6,7 @@ public interface CategoriasFragmentListener {
     /**
      * Metodo con parametros de prueba para ejecutar una llamada del fragment a la activity
      */
-    void onCreateSomething(Categorias categorias);
+    void InsetarCategoria(Categorias categorias);
 
     /**
      * Se pueden agregar mas metodos de ser necesario.

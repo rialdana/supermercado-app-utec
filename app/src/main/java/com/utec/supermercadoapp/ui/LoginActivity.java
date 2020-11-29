@@ -92,15 +92,19 @@ public class LoginActivity extends AppCompatActivity {
             dao.insertUser(regularUser2);
             dao.insertUser(regularUser3);
 
-            categoriasDao.Insertar(categoria1);
-            categoriasDao.Insertar(categoria2);
-            categoriasDao.Insertar(categoria3);
-            categoriasDao.Insertar(categoria4);
+            if(categoriasDao.Uno(1) == null) {
+                categoriasDao.Insertar(categoria1);
+                categoriasDao.Insertar(categoria2);
+                categoriasDao.Insertar(categoria3);
+                categoriasDao.Insertar(categoria4);
+                sucurslesDao.Insertar(sucursal1);
+                sucurslesDao.Insertar(sucursal2);
+            }
 
 
 
-            sucurslesDao.Insertar(sucursal1);
-            sucurslesDao.Insertar(sucursal2);
+
+
 
             Log.i("TAG", "get_Lista_Categoria: "+ categoriasDao.Todo().get(0).getCategoria() );
 

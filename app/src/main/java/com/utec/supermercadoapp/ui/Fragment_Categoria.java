@@ -5,32 +5,23 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.TextView;
-
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.utec.supermercadoapp.R;
-import com.utec.supermercadoapp.database.SupermarketDao;
-import com.utec.supermercadoapp.database.SupermarketRoomDatabase;
-import com.utec.supermercadoapp.database.dao.CategoriasDao;
-import com.utec.supermercadoapp.database.dao.SucurslesDao;
 import com.utec.supermercadoapp.database.entities.Categorias;
 import com.utec.supermercadoapp.listeners.CategoriasFragmentListener;
+import com.utec.supermercadoapp.listeners.OnTestCreateSomethingListener;
 
 import java.util.Objects;
 
-
-/**
- * Fragment creado para mostrar una parte de la pantalla con el contenido nada mas
- */
-public class CategoriasFragment extends BottomSheetDialogFragment {
+public class Fragment_Categoria extends BottomSheetDialogFragment {
 
     /**
      * Hay que definir un listener, este listener es la interfaz mediante la cual nos vamos
@@ -41,11 +32,11 @@ public class CategoriasFragment extends BottomSheetDialogFragment {
 
     private TextInputLayout Nombre;
 
-    private CategoriasFragment() {
+    private Fragment_Categoria() {
     }
 
-    public static CategoriasFragment newInstance() {
-        return new CategoriasFragment();
+    public static Fragment_Categoria newInstance() {
+        return new Fragment_Categoria();
     }
 
     /**
@@ -78,7 +69,7 @@ public class CategoriasFragment extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_categorias, container, false);
+        return inflater.inflate(R.layout.fragment__categoria, container, false);
     }
 
     /**
@@ -87,18 +78,25 @@ public class CategoriasFragment extends BottomSheetDialogFragment {
      */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        Nombre = view.findViewById(R.id.text_input_layout_nombre_categoria);
-        String nombre = Objects.requireNonNull(Nombre.getEditText()).getText().toString();
-        Categorias categoria = new Categorias(nombre);
 
-       view.findViewById(R.id.guardar_categoria).setOnClickListener(v -> {
+        Nombre = view.findViewById(R.id.text_input_layout_nombre_categoria);
+
+
+
+        view.findViewById(R.id.button_guardar_categoria).setOnClickListener(v -> {
+
+            String nombre = Objects.requireNonNull(Nombre.getEditText()).getText().toString();
+
+            Log.i("TAG", "Categoria: "+ nombre );
+            Categorias categorias = new Categorias(nombre);
 
             /**
              * Para comunicarnos con la activity, basta con llamar un metodo del listener y esto
              * automaticamente ejecutará el metodo que se encuentra implementado
              * en la activity que contiene este fragment
              */
-            listener.onCreateSomething(categoria);
+            Log.i("TAG", "Categoria: "+ categorias.getCategoria() );
+            listener.InsetarCategoria(categorias);
             dismiss();
         });
     }

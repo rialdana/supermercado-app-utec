@@ -22,10 +22,11 @@ import com.utec.supermercadoapp.database.dao.SucurslesDao;
 import com.utec.supermercadoapp.database.entities.Categorias;
 import com.utec.supermercadoapp.database.entities.Sucursales;
 import com.utec.supermercadoapp.listeners.CategoriasFragmentListener;
+import com.utec.supermercadoapp.listeners.SucursalesFragmentListener;
 
 import java.util.Objects;
 
-public class HomeActivity extends AppCompatActivity implements categoriasListener, sucursalesListener, CategoriasFragmentListener {
+public class HomeActivity extends AppCompatActivity implements categoriasListener, sucursalesListener, CategoriasFragmentListener, SucursalesFragmentListener {
 
     private CategoriasDao categoriasDao;
     private SucurslesDao sucurslesDao;
@@ -43,8 +44,13 @@ public class HomeActivity extends AppCompatActivity implements categoriasListene
         findViews();
 
 
+
         Button openFragmentButton = findViewById(R.id.button_add_categories);
         Button openFramentSucursales = findViewById(R.id.button_add_address);
+
+
+
+
 
        openFragmentButton.setOnClickListener(v -> {
             /**
@@ -52,9 +58,12 @@ public class HomeActivity extends AppCompatActivity implements categoriasListene
              * OnTestCreateSomethingListener, si no la implementa la app podria crashear
              * porque es necesaria en el fragment para poderse comunicar de vuelta
              */
-           CategoriasFragment fragmentCategoria = CategoriasFragment.newInstance();
 
-           fragmentCategoria.show(getSupportFragmentManager(), fragmentCategoria.getTag());
+           //TestCreateSomethingFragment fragment = TestCreateSomethingFragment.newInstance();
+          // fragment.show(getSupportFragmentManager(), fragment.getTag());
+
+           Fragment_Categoria fragment_categoria = Fragment_Categoria.newInstance();
+           fragment_categoria.show(getSupportFragmentManager(), fragment_categoria.getTag());
 
        });
 
@@ -65,8 +74,11 @@ public class HomeActivity extends AppCompatActivity implements categoriasListene
              * OnTestCreateSomethingListener, si no la implementa la app podria crashear
              * porque es necesaria en el fragment para poderse comunicar de vuelta
              */
-            SucursalesFragment fragment = SucursalesFragment.newInstance();
-            fragment.show(getSupportFragmentManager(), fragment.getTag());
+
+
+            Fragment_Sucursal fragment_sucursal = Fragment_Sucursal.newInstance();
+            fragment_sucursal.show(getSupportFragmentManager(), fragment_sucursal.getTag());
+
         });
 
 
@@ -83,8 +95,7 @@ public class HomeActivity extends AppCompatActivity implements categoriasListene
         SupermarketRoomDatabase.databaseWriteExecutor.execute(() -> {
             RecyclerViewCategorias.setAdapter(new AdpatadorCategorias(categoriasDao.Todo(), this));
 
-            Log.i("TAG", "get_Lista_Categoria: "+ categoriasDao.Todo().get(5).getCategoria() );
-            Log.i("TAG", "get_Lista_Categoria: "+ sucurslesDao.Todo().get(0).getNombre());
+
 
             RecyclerViewSucursales.setAdapter(new AdpatadorSucursales(sucurslesDao.Todo(), this));
         });
@@ -110,10 +121,18 @@ public class HomeActivity extends AppCompatActivity implements categoriasListene
 
 
     @Override
-    public void onCreateSomething(Categorias categoria) {
+    public void InsetarCategoria(Categorias categorias) {
         SupermarketRoomDatabase.databaseWriteExecutor.execute(() -> {
-            categoriasDao.Insertar(categoria);
-            Log.i("TAG", "get_Lista_Categoria: "+ categoriasDao.Todo().get(2).getCategoria() );
+            categoriasDao.Insertar(categorias);
+        });
+    }
+
+    @Override
+    public void InsetarSucursal(Sucursales sucursales) {
+        SupermarketRoomDatabase.databaseWriteExecutor.execute(() -> {
+
+            sucurslesDao.Insertar(sucursales);
+            
         });
     }
 }
