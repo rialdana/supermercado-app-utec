@@ -86,7 +86,7 @@ public class Fragment_Sucursal extends BottomSheetDialogFragment {
         Telefono = view.findViewById(R.id.text_input_layout_telefono_sucursal);
 
 
-        view.findViewById(R.id.button_guardar_categoria).setOnClickListener(v -> {
+        view.findViewById(R.id.button_guardar_sucursal).setOnClickListener(v -> {
 
             String nombre = Objects.requireNonNull(Nombre.getEditText()).getText().toString();
             String direccion =  Objects.requireNonNull(Direccion.getEditText()).getText().toString();
