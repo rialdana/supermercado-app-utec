@@ -26,7 +26,7 @@ public class TestCreateSomethingFragment extends BottomSheetDialogFragment {
      */
     private OnTestCreateSomethingListener listener;
 
-    private Button mButtonCreateSomething;
+    //private Button mButtonCreateSomething;
 
     private TestCreateSomethingFragment() {
     }
@@ -76,15 +76,16 @@ public class TestCreateSomethingFragment extends BottomSheetDialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         //mButtonCreateSomething = view.findViewById(R.id.button_test_create_something);
 
-        mButtonCreateSomething.setOnClickListener(v -> {
+        /*mButtonCreateSomething.setOnClickListener(v -> {
 
             /**
              * Para comunicarnos con la activity, basta con llamar un metodo del listener y esto
              * automaticamente ejecutará el metodo que se encuentra implementado
              * en la activity que contiene este fragment
              */
-            listener.onCreateSomething("Hola", 2020);
-            dismiss();
-        });
+            //listener.onCreateSomething("Hola", 2020);
+           // dismiss();
+       // }
+       // );
     }
 }
