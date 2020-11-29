@@ -68,13 +68,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
+                    android:orientation="horizontal"
                     android:overScrollMode="never"
-                    android:padding="8dp"
+                    android:paddingVertical="5sp"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:spanCount="3"
-                    tools:itemCount="3"
+                    app:spanCount="1"
+                    tools:itemCount="1"
                     tools:listitem="@layout/recyclerview_horizontal" />
 
                 <Button
@@ -108,8 +109,8 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:spanCount="3"
-                tools:itemCount="3"
+                app:spanCount="2"
+                tools:itemCount="2"
                 tools:listitem="@layout/recyclerview_vertical" />
 
 
