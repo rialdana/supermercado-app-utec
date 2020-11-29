@@ -2,17 +2,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/button_categories"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textSize="15dp"
-        android:background="@drawable/edges_rectangle"
-        android:gravity="center_vertical"
-        android:textAllCaps="false"
-        android:text="Limpieza" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="100dp"
+        android:layout_height="30dp">
+
+        <LinearLayout
+            android:layout_width="110dp"
+            android:layout_height="43dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView_Categoria"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="5dp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/primaryDarkColor"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>

@@ -7,47 +7,67 @@
     android:background="@android:color/white"
     tools:context=".ui.HomeActivity">
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="20dp">
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
 
         <TextView
             android:id="@+id/textView_hello"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="30dp"
+            android:text="@string/hello"
             android:textColor="@color/secondaryDarkColor"
-            tools:text="@string/hello" />
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
+            android:text="@string/message"
             android:textColor="@color/primaryDarkColor"
-            tools:text="@string/message" />
+            android:textSize="16sp"
+
+            />
 
         <TextView
             android:id="@+id/textView_categories_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:textStyle="bold"
+            android:text="@string/categories"
             android:textColor="@color/primaryDarkColor"
-            tools:text="@string/categories" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="71dp"
             android:orientation="horizontal">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/Lista_Categorias"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp" />
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                android:padding="10dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:spanCount="2"
+                tools:itemCount="2"
+                tools:listitem="@layout/recyclerview_horizontal" />
 
             <Button
                 android:id="@+id/button_add_categories"
@@ -55,38 +75,50 @@
                 android:layout_height="40dp"
                 android:background="@drawable/edges_oval"
                 android:backgroundTint="@android:color/holo_red_dark"
-                android:text="+"
+                android:text="@string/Mas_Categoria"
                 android:textStyle="bold" />
         </LinearLayout>
+
         <TextView
             android:id="@+id/textView_address_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:textStyle="bold"
+            android:text="@string/address"
             android:textColor="@color/primaryDarkColor"
-            tools:text="@string/address" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:id="@+id/Lista_Sucursales"
+            android:layout_width="wrap_content"
+            android:layout_height="401dp"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:padding="10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:spanCount="2"
+            tools:itemCount="2"
+            tools:listitem="@layout/recyclerview_vertical" />
 
-        </androidx.recyclerview.widget.RecyclerView>
 
         <Button
             android:id="@+id/button_add_address"
-            android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:background="@drawable/edges_rectangle"
             android:backgroundTint="@android:color/holo_red_dark"
             android:gravity="center_horizontal"
             android:paddingHorizontal="80dp"
             android:paddingVertical="5dp"
-            android:text="+"
+            android:text="@string/Mas_Sucusales"
             android:textAllCaps="false"
-            android:textSize="15dp"
+            android:textSize="18sp"
             android:textStyle="bold" />
+
+
 
     </LinearLayout>
 

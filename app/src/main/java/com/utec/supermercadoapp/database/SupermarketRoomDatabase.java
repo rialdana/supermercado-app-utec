@@ -6,15 +6,23 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.utec.supermercadoapp.database.dao.CategoriasDao;
+import com.utec.supermercadoapp.database.dao.SucurslesDao;
+import com.utec.supermercadoapp.database.entities.Categorias;
+import com.utec.supermercadoapp.database.entities.Sucursales;
 import com.utec.supermercadoapp.database.entities.User;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {User.class}, version = 2, exportSchema = false)
+@Database(entities = {User.class , Sucursales.class , Categorias.class}, version = 2, exportSchema = false)
 public abstract class SupermarketRoomDatabase extends RoomDatabase {
 
     public abstract SupermarketDao supermarketDao();
+
+    public abstract CategoriasDao categoriasDao();
+
+    public abstract SucurslesDao sucurslesDao();
 
     private static volatile SupermarketRoomDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;

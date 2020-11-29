@@ -6,4 +6,6 @@
     <string name="message">Es un buen dia para ver los nuevos produtos disponibles en nuestras sucursales</string>
     <string name="categories">Categorias</string>
     <string name="address">Sucursales</string>
+    <string name="Mas_Categoria">+</string>
+    <string name="Mas_Sucusales">+</string>
 </resources>
