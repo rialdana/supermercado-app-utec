@@ -2,14 +2,13 @@ package com.utec.supermercadoapp.ui;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.utec.supermercadoapp.R;
@@ -18,7 +17,7 @@ import com.utec.supermercadoapp.listeners.OnTestCreateSomethingListener;
 /**
  * Fragment creado para mostrar una parte de la pantalla con el contenido nada mas
  */
-public class TestCreateSomethingFragment extends BottomSheetDialogFragment {
+public class TestCreateSomethingFragment2 extends BottomSheetDialogFragment {
 
     /**
      * Hay que definir un listener, este listener es la interfaz mediante la cual nos vamos
@@ -28,11 +27,11 @@ public class TestCreateSomethingFragment extends BottomSheetDialogFragment {
 
     private Button mButtonCreateSomething;
 
-    private TestCreateSomethingFragment() {
+    private TestCreateSomethingFragment2() {
     }
 
-    public static TestCreateSomethingFragment newInstance() {
-        return new TestCreateSomethingFragment();
+    public static TestCreateSomethingFragment2 newInstance() {
+        return new TestCreateSomethingFragment2();
     }
 
     /**
@@ -65,7 +64,7 @@ public class TestCreateSomethingFragment extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_test_create_something, container, false);
+        return inflater.inflate(R.layout.fragment_test_create_something2, container, false);
     }
 
     /**

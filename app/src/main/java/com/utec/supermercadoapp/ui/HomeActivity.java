@@ -36,6 +36,8 @@ public class HomeActivity extends AppCompatActivity implements categoriasListene
 
        Button openFragmentButton = findViewById(R.id.button_add_categories);
        Button openFramentSucursales = findViewById(R.id.button_add_address);
+
+
        openFragmentButton.setOnClickListener(v -> {
             /**
              * Creando el fragment y mostrandolo, esta activity debe implementar la interfaz
@@ -53,8 +55,8 @@ public class HomeActivity extends AppCompatActivity implements categoriasListene
              * OnTestCreateSomethingListener, si no la implementa la app podria crashear
              * porque es necesaria en el fragment para poderse comunicar de vuelta
              */
-            TestCreateSomethingFragment fragment = TestCreateSomethingFragment.newInstance();
-            fragment.show(getSupportFragmentManager(), fragment.getTag());
+            TestCreateSomethingFragment2 fragment2 = TestCreateSomethingFragment2.newInstance();
+            fragment2.show(getSupportFragmentManager(), fragment2.getTag());
         });
     }
 
