@@ -65,7 +65,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/Lista_Categorias"
-                    android:layout_width="wrap_content"
+                    android:layout_width="325dp"
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
                     android:orientation="horizontal"
@@ -102,7 +102,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/Lista_Sucursales"
                 android:layout_width="wrap_content"
-                android:layout_height="401dp"
+                android:layout_height="352dp"
                 android:clipToPadding="false"
                 android:overScrollMode="never"
                 android:padding="10dp"
@@ -122,6 +122,7 @@
                 android:background="@drawable/edges_rectangle"
                 android:backgroundTint="@android:color/holo_red_dark"
                 android:gravity="center_horizontal"
+                android:layout_marginVertical="5sp"
                 android:paddingHorizontal="80dp"
                 android:paddingVertical="5dp"
                 android:text="@string/Mas_Sucusales"
