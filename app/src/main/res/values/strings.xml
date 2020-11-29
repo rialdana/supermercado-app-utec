@@ -8,4 +8,7 @@
     <string name="address">Sucursales</string>
     <string name="Mas_Categoria">+</string>
     <string name="Mas_Sucusales">+</string>
+    <string name="nueva_categoria">Nueva categoria</string>
+    <string name="nombre_Placeholder">Nombre</string>
+    <string name="guardar_boton">Guardar</string>
 </resources>
