@@ -65,7 +65,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/Lista_Categorias"
-                    android:layout_width="325dp"
+                    android:layout_width="311dp"
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
                     android:orientation="horizontal"
