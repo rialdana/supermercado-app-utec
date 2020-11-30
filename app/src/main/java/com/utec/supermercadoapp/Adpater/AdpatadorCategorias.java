@@ -46,7 +46,7 @@ public class AdpatadorCategorias extends RecyclerView.Adapter<AdpatadorCategoria
         TextView textViewContinentName;
 
 
-        public CategoriasViewHolder (@NonNull View itemView) {
+        public CategoriasViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewContinentName = itemView.findViewById(R.id.textView_Categoria);
 
@@ -55,5 +55,10 @@ public class AdpatadorCategorias extends RecyclerView.Adapter<AdpatadorCategoria
         public void bindData(final Categorias categoria, final categoriasListener listener) {
             textViewContinentName.setText(categoria.getCategoria());
         }
+    }
+
+    public void setNewList(List<Categorias> categoriasList) {
+        this.categoriasList = categoriasList;
+        notifyDataSetChanged();
     }
 }

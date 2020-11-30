@@ -10,7 +10,6 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.utec.supermercadoapp.R;
-
 import com.utec.supermercadoapp.database.entities.Sucursales;
 
 import java.util.List;
@@ -65,11 +64,13 @@ public class AdpatadorSucursales extends RecyclerView.Adapter<AdpatadorSucursale
                 @Override
                 public void onClick(View v) {
                     listener.selectSucursales(sucursales);
-                    //Toast.makeText(v.getContext(), sucursales.getNombre(), Toast.LENGTH_SHORT-30).show();
                 }
             });
-
-
         }
+    }
+
+    public void setNewList(List<Sucursales> SucursaleList) {
+        this.SucursaleList = SucursaleList;
+        notifyDataSetChanged();
     }
 }

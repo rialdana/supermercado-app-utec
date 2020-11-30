@@ -8,9 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,19 +16,13 @@ import androidx.annotation.Nullable;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.textfield.TextInputLayout;
-import com.utec.supermercadoapp.Adpater.AdaptadorProductos;
-import com.utec.supermercadoapp.Adpater.AdpatadorCategorias;
-import com.utec.supermercadoapp.Adpater.AdpatadorCategorias1;
 import com.utec.supermercadoapp.R;
 import com.utec.supermercadoapp.database.SupermarketRoomDatabase;
 import com.utec.supermercadoapp.database.dao.CategoriasDao;
-import com.utec.supermercadoapp.database.dao.ProductosDao;
-import com.utec.supermercadoapp.database.entities.Categorias;
 import com.utec.supermercadoapp.database.entities.Productos;
 import com.utec.supermercadoapp.listeners.ProductosFragmentListener;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class Fragment_Producto extends BottomSheetDialogFragment {

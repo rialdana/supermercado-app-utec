@@ -18,13 +18,15 @@ import com.utec.supermercadoapp.Adpater.sucursalesListener;
 import com.utec.supermercadoapp.R;
 import com.utec.supermercadoapp.database.SupermarketRoomDatabase;
 import com.utec.supermercadoapp.database.dao.CategoriasDao;
-import com.utec.supermercadoapp.database.dao.ProductosDao;
 import com.utec.supermercadoapp.database.dao.SucurslesDao;
 import com.utec.supermercadoapp.database.entities.Categorias;
 import com.utec.supermercadoapp.database.entities.Sucursales;
 import com.utec.supermercadoapp.database.entities.User;
 import com.utec.supermercadoapp.listeners.CategoriasFragmentListener;
 import com.utec.supermercadoapp.listeners.SucursalesFragmentListener;
+
+import java.util.Collections;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity implements categoriasListener, sucursalesListener, CategoriasFragmentListener, SucursalesFragmentListener {
 
@@ -34,6 +36,10 @@ public class HomeActivity extends AppCompatActivity implements categoriasListene
     private Button openFragmentButton, openFramentSucursales;
     private ImageButton goBackButton;
     private int userType;
+    private AdpatadorCategorias adaptadorCategorias;
+    private AdpatadorSucursales adaptadorSucursales;
+    private List<Categorias> categoriasList = Collections.emptyList();
+    private List<Sucursales> sucursalesList = Collections.emptyList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,10 +88,23 @@ public class HomeActivity extends AppCompatActivity implements categoriasListene
     }
 
     public void loadDatabaseInfo() {
+
+        adaptadorCategorias = new AdpatadorCategorias(categoriasList, this);
+        adaptadorSucursales = new AdpatadorSucursales(sucursalesList, this);
+
+        RecyclerViewCategorias.setAdapter(adaptadorCategorias);
+        RecyclerViewSucursales.setAdapter(adaptadorSucursales);
+
         SupermarketRoomDatabase.databaseWriteExecutor.execute(() -> {
-            RecyclerViewCategorias.setAdapter(new AdpatadorCategorias(categoriasDao.Todo(), this));
-            RecyclerViewSucursales.setAdapter(new AdpatadorSucursales(sucurslesDao.Todo(), this));
+            categoriasList = categoriasDao.Todo();
+            sucursalesList = sucurslesDao.Todo();
+            runOnUiThread(this::updateData);
         });
+    }
+
+    private void updateData() {
+        adaptadorSucursales.setNewList(sucursalesList);
+        adaptadorCategorias.setNewList(categoriasList);
     }
 
     private void findViews() {
@@ -111,11 +130,12 @@ public class HomeActivity extends AppCompatActivity implements categoriasListene
         startActivity(intent);
     }
 
-
     @Override
     public void InsetarCategoria(Categorias categorias) {
         SupermarketRoomDatabase.databaseWriteExecutor.execute(() -> {
             categoriasDao.Insertar(categorias);
+            categoriasList = categoriasDao.Todo();
+            runOnUiThread(this::updateData);
         });
 
         showSnackbar("Categoria guardada exitosamente!");
@@ -125,6 +145,8 @@ public class HomeActivity extends AppCompatActivity implements categoriasListene
     public void InsetarSucursal(Sucursales sucursales) {
         SupermarketRoomDatabase.databaseWriteExecutor.execute(() -> {
             sucurslesDao.Insertar(sucursales);
+            sucursalesList = sucurslesDao.Todo();
+            runOnUiThread(this::updateData);
         });
 
         showSnackbar("Sucursal guardada exitosamente!");
