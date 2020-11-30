@@ -19,7 +19,33 @@
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+            android:theme="?attr/actionBarTheme"
+            >
+
+            <TextView
+                android:id="@+id/categorySpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="16sp"
+                android:text="App SuperMercados"
+                android:textSize="24sp"
+                android:textColor="@color/primaryTextColor" />
+
+            <ImageButton
+                android:id="@+id/boton_Atras"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginLeft="20px"
+                android:background="@drawable/baseline_exit_to_app_white_36"
+                android:hint="Name" />
+        </androidx.appcompat.widget.Toolbar>
+
+
+
+
+
+
 
         <LinearLayout
             android:layout_width="match_parent"

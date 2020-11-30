@@ -1,14 +1,19 @@
 package com.utec.supermercadoapp.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Spinner;
+
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -36,28 +41,36 @@ public class HomeActivity extends AppCompatActivity implements categoriasListene
     private SucurslesDao sucurslesDao;
     private ProductosDao productosDao;
     private RecyclerView RecyclerViewCategorias, RecyclerViewSucursales;
-
-
+    private Toolbar mToolbar;
+    Spinner botonAtras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.Theme_SupermercadoApp);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        findViews();
         createDatabase();
         get_Lista_Categoria();
-        findViews();
+
 
 
 
         Button openFragmentButton = findViewById(R.id.button_add_categories);
         Button openFramentSucursales = findViewById(R.id.button_add_address);
+        ImageButton atras = findViewById(R.id.boton_Atras);
 
 
 
+atras.setOnClickListener(v -> {
+
+        finish();
+
+});
 
 
-       openFragmentButton.setOnClickListener(v -> {
+
+        openFragmentButton.setOnClickListener(v -> {
             /**
              * Creando el fragment y mostrandolo, esta activity debe implementar la interfaz
              * OnTestCreateSomethingListener, si no la implementa la app podria crashear
@@ -100,9 +113,6 @@ public class HomeActivity extends AppCompatActivity implements categoriasListene
     public void  get_Lista_Categoria(){
         SupermarketRoomDatabase.databaseWriteExecutor.execute(() -> {
             RecyclerViewCategorias.setAdapter(new AdpatadorCategorias(categoriasDao.Todo(), this));
-
-
-
             RecyclerViewSucursales.setAdapter(new AdpatadorSucursales(sucurslesDao.Todo(), this));
         });
     }
