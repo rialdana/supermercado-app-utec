@@ -18,7 +18,29 @@
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+            android:theme="?attr/actionBarTheme">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:id="@+id/image_button_go_back"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_baseline_arrow_back_24" />
+
+                <TextView
+                    android:id="@+id/textView_sucursal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="Sucursal Los angeles" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,10 +50,10 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView_sucursal"
+                android:id="@+id/textView_productos"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:text="@string/categories"
+                android:text="Productos"
                 android:textColor="@color/primaryDarkColor"
                 android:textSize="18sp"
                 android:textStyle="bold" />

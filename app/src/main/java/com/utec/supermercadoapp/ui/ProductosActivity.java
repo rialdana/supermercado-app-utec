@@ -17,6 +17,7 @@ import com.utec.supermercadoapp.listeners.ProductosFragmentListener;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.Collections;
@@ -34,6 +35,7 @@ public class ProductosActivity extends AppCompatActivity implements productosLis
     private Button openFragmentButton;
     private List<Productos> productos = Collections.emptyList();
     private AdaptadorProductos adaptadorProductos;
+    private ImageButton imageButtonGoBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,18 +45,22 @@ public class ProductosActivity extends AppCompatActivity implements productosLis
         findViews();
         loadDatabase();
         loadArguments();
+        setClickListeners();
 
+        adaptadorProductos = new AdaptadorProductos(Collections.emptyList(), this);
+        RecyclerViewProductos.setAdapter(adaptadorProductos);
 
+        getProductos();
+    }
+
+    private void setClickListeners() {
         openFragmentButton.setOnClickListener(v -> {
             Fragment_Producto fragment_producto = Fragment_Producto.newInstance();
             fragment_producto.idSucursal = idSucursal;
             fragment_producto.show(getSupportFragmentManager(), fragment_producto.getTag());
         });
 
-        adaptadorProductos = new AdaptadorProductos(Collections.emptyList(), this);
-        RecyclerViewProductos.setAdapter(adaptadorProductos);
-
-        getProductos();
+        imageButtonGoBack.setOnClickListener(v -> onBackPressed());
     }
 
     private void loadDatabase() {
@@ -79,6 +85,7 @@ public class ProductosActivity extends AppCompatActivity implements productosLis
         titulo = findViewById(R.id.textView_sucursal);
         RecyclerViewProductos = findViewById(R.id.Lista_Productos);
         openFragmentButton = findViewById(R.id.button_add_producto);
+        imageButtonGoBack = findViewById(R.id.image_button_go_back);
     }
 
     public void getProductos() {
