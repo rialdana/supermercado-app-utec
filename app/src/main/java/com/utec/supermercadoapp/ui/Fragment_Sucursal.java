@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.textfield.TextInputLayout;
@@ -91,6 +92,25 @@ public class Fragment_Sucursal extends BottomSheetDialogFragment {
             String nombre = Objects.requireNonNull(Nombre.getEditText()).getText().toString();
             String direccion =  Objects.requireNonNull(Direccion.getEditText()).getText().toString();
             String telefono =  Objects.requireNonNull(Telefono.getEditText()).getText().toString();
+
+            if(nombre.isEmpty())
+            {
+                Toast.makeText(this.getActivity(), "Debe ingresar un nombre",Toast.LENGTH_LONG).show();
+                Nombre.requestFocus();
+                return;
+            }
+            if(direccion.isEmpty())
+            {
+                Toast.makeText(this.getActivity(), "Debe ingresar una direccion",Toast.LENGTH_LONG).show();
+                Direccion.requestFocus();
+                return;
+            }
+            if(telefono.isEmpty())
+            {
+                Toast.makeText(this.getActivity(), "Debe ingresar un telefono",Toast.LENGTH_LONG).show();
+                Telefono.requestFocus();
+                return;
+            }
 
 
             Sucursales sucursal = new Sucursales(nombre, direccion, telefono);
