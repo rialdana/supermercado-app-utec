@@ -19,6 +19,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
 public class ProductosActivity extends AppCompatActivity implements productosListener, ProductosFragmentListener {
@@ -30,6 +32,8 @@ public class ProductosActivity extends AppCompatActivity implements productosLis
     private ProductosDao productosDao;
     private RecyclerView RecyclerViewProductos;
     private Button openFragmentButton;
+    private List<Productos> productos = Collections.emptyList();
+    private AdaptadorProductos adaptadorProductos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +42,6 @@ public class ProductosActivity extends AppCompatActivity implements productosLis
 
         findViews();
         loadDatabase();
-        getProductos();
         loadArguments();
 
 
@@ -47,6 +50,11 @@ public class ProductosActivity extends AppCompatActivity implements productosLis
             fragment_producto.idSucursal = idSucursal;
             fragment_producto.show(getSupportFragmentManager(), fragment_producto.getTag());
         });
+
+        adaptadorProductos = new AdaptadorProductos(Collections.emptyList(), this);
+        RecyclerViewProductos.setAdapter(adaptadorProductos);
+
+        getProductos();
     }
 
     private void loadDatabase() {
@@ -75,8 +83,13 @@ public class ProductosActivity extends AppCompatActivity implements productosLis
 
     public void getProductos() {
         SupermarketRoomDatabase.databaseWriteExecutor.execute(() -> {
-            RecyclerViewProductos.setAdapter(new AdaptadorProductos(productosDao.Uno(idSucursal), this));
+            productos = productosDao.Uno(idSucursal);
+            runOnUiThread(this::updateProducts);
         });
+    }
+
+    private void updateProducts() {
+        adaptadorProductos.setNewList(productos);
     }
 
     @Override
@@ -88,9 +101,9 @@ public class ProductosActivity extends AppCompatActivity implements productosLis
     public void InsertarProducto(Productos producto) {
         SupermarketRoomDatabase.databaseWriteExecutor.execute(() -> {
             productosDao.Insertar(producto);
+            productos = productosDao.Uno(idSucursal);
+            runOnUiThread(this::updateProducts);
         });
-
-        getProductos();
     }
 
     private void showSnackbar(String message) {

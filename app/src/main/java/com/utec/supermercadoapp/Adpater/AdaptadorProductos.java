@@ -58,17 +58,12 @@ public class AdaptadorProductos extends RecyclerView.Adapter<AdaptadorProductos.
         public void bindData(Productos producto, productosListener listener) {
             nombre.setText(producto.getNombre());
             descripcion.setText(producto.getDescripcion());
-            precio.setText("$ "+String.valueOf(producto.getPrecio()));
-
-            /*cardViewSucursal.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.selectSucursales(sucursales);
-                    //Toast.makeText(v.getContext(), sucursales.getNombre(), Toast.LENGTH_SHORT-30).show();
-                }
-            });*/
-
-
+            precio.setText("$ " + String.valueOf(producto.getPrecio()));
         }
+    }
+
+    public void setNewList(List<Productos> productos) {
+        this.ProductosList = productos;
+        notifyDataSetChanged();
     }
 }
