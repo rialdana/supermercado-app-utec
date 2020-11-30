@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.textfield.TextInputLayout;
@@ -86,6 +87,13 @@ public class Fragment_Categoria extends BottomSheetDialogFragment {
         view.findViewById(R.id.button_guardar_categoria).setOnClickListener(v -> {
 
             String nombre = Objects.requireNonNull(Nombre.getEditText()).getText().toString();
+
+            if(nombre.isEmpty())
+            {
+                Toast.makeText(this.getActivity(), "Debe ingresar un nombre",Toast.LENGTH_LONG).show();
+                Nombre.requestFocus();
+                return;
+            }
 
             Log.i("TAG", "Categoria: "+ nombre );
             Categorias categorias = new Categorias(nombre);
