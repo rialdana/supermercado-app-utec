@@ -1,13 +1,12 @@
 package com.utec.supermercadoapp.Adpater;
 
-import android.nfc.Tag;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.utec.supermercadoapp.R;
@@ -46,18 +45,31 @@ public class AdpatadorSucursales extends RecyclerView.Adapter<AdpatadorSucursale
     public class SucursalesViewHolder extends RecyclerView.ViewHolder {
 
         TextView nombre, direccion, telefono;
+        private CardView cardViewSucursal;
 
         public SucursalesViewHolder(@NonNull View itemView) {
             super(itemView);
             nombre = itemView.findViewById(R.id.textView_name);
-            direccion = itemView.findViewById(R.id.textView_address);
+            direccion = itemView.findViewById(R.id.textView_description);
             telefono = itemView.findViewById(R.id.textView_phone);
+            cardViewSucursal = itemView.findViewById(R.id.cardview_recyclerview_horizontal);
+
         }
 
         public void bindData(Sucursales sucursales, sucursalesListener listener) {
             nombre.setText(sucursales.getNombre());
             direccion.setText(sucursales.getDirecion());
             telefono.setText(sucursales.getTelefono());
+
+            cardViewSucursal.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.selectSucursales(sucursales);
+                    //Toast.makeText(v.getContext(), sucursales.getNombre(), Toast.LENGTH_SHORT-30).show();
+                }
+            });
+
+
         }
     }
 }

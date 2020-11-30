@@ -7,7 +7,6 @@ import androidx.room.Query;
 import com.utec.supermercadoapp.database.entities.Categorias;
 
 import java.util.List;
-
 @Dao
 public interface CategoriasDao {
 
@@ -19,5 +18,8 @@ public interface CategoriasDao {
 
     @Insert
     void Insertar(Categorias categoria);
+
+
+
 
 }

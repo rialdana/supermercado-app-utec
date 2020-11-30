@@ -17,8 +17,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.utec.supermercadoapp.R;
 import com.utec.supermercadoapp.database.entities.Categorias;
 import com.utec.supermercadoapp.database.entities.Sucursales;
-import com.utec.supermercadoapp.listeners.OnTestCreateSomethingListener;
 import com.utec.supermercadoapp.listeners.SucursalesFragmentListener;
+
 
 import java.util.Objects;
 

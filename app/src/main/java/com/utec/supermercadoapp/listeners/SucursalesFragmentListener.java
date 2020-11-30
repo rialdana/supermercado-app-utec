@@ -11,4 +11,5 @@ public interface SucursalesFragmentListener {
     /**
      * Se pueden agregar mas metodos de ser necesario.
      */
+
 }

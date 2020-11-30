@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/SplashScreenTheme">
-        <activity android:name=".ui.HomeActivity">
+        <activity android:name=".ui.ProductosActivity" android:windowSoftInputMode="adjustResize"></activity>
 
-        </activity>
+        <activity android:name=".ui.HomeActivity"></activity>
         <activity android:name=".ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

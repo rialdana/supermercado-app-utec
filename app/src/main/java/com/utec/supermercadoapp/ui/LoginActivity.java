@@ -13,8 +13,10 @@ import com.utec.supermercadoapp.R;
 import com.utec.supermercadoapp.database.SupermarketDao;
 import com.utec.supermercadoapp.database.SupermarketRoomDatabase;
 import com.utec.supermercadoapp.database.dao.CategoriasDao;
+import com.utec.supermercadoapp.database.dao.ProductosDao;
 import com.utec.supermercadoapp.database.dao.SucurslesDao;
 import com.utec.supermercadoapp.database.entities.Categorias;
+import com.utec.supermercadoapp.database.entities.Productos;
 import com.utec.supermercadoapp.database.entities.Sucursales;
 import com.utec.supermercadoapp.database.entities.User;
 
@@ -25,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private SupermarketDao dao;
     private CategoriasDao categoriasDao;
     private SucurslesDao sucurslesDao;
+    private ProductosDao productosDao;
     private MaterialButton mLoginButton;
     private TextInputLayout mTextUsername;
     private TextInputLayout mTextPassword;
@@ -68,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
         dao = db.supermarketDao();
         categoriasDao = db.categoriasDao();
         sucurslesDao = db.sucurslesDao();
+        productosDao=db.productosDao();
     }
 
     private void insertUsers() {
@@ -100,6 +104,12 @@ public class LoginActivity extends AppCompatActivity {
                 sucurslesDao.Insertar(sucursal1);
                 sucurslesDao.Insertar(sucursal2);
             }
+
+            Productos productos= new Productos("leche","botella sdsf",5,1.50,1,1);
+            productosDao.Insertar(productos);
+
+
+
 
 
 

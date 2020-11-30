@@ -14,7 +14,6 @@ public class Categorias {
     private String Categoria;
 
     public Categorias() {
-
     }
 
     public Categorias(@NonNull String categoria) {
@@ -37,4 +36,6 @@ public class Categorias {
     public String getCategoria() {
         return Categoria;
     }
+
+
 }

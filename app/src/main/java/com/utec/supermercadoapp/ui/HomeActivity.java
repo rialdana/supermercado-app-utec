@@ -3,6 +3,7 @@ package com.utec.supermercadoapp.ui;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,18 +19,22 @@ import com.utec.supermercadoapp.Adpater.sucursalesListener;
 import com.utec.supermercadoapp.R;
 import com.utec.supermercadoapp.database.SupermarketRoomDatabase;
 import com.utec.supermercadoapp.database.dao.CategoriasDao;
+import com.utec.supermercadoapp.database.dao.ProductosDao;
 import com.utec.supermercadoapp.database.dao.SucurslesDao;
 import com.utec.supermercadoapp.database.entities.Categorias;
+import com.utec.supermercadoapp.database.entities.Productos;
 import com.utec.supermercadoapp.database.entities.Sucursales;
 import com.utec.supermercadoapp.listeners.CategoriasFragmentListener;
 import com.utec.supermercadoapp.listeners.SucursalesFragmentListener;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity implements categoriasListener, sucursalesListener, CategoriasFragmentListener, SucursalesFragmentListener {
 
     private CategoriasDao categoriasDao;
     private SucurslesDao sucurslesDao;
+    private ProductosDao productosDao;
     private RecyclerView RecyclerViewCategorias, RecyclerViewSucursales;
 
 
@@ -89,6 +94,7 @@ public class HomeActivity extends AppCompatActivity implements categoriasListene
         SupermarketRoomDatabase db = SupermarketRoomDatabase.getDatabase(getApplicationContext());
         categoriasDao = db.categoriasDao();
         sucurslesDao = db.sucurslesDao();
+        productosDao=db.productosDao();
     }
 
     public void  get_Lista_Categoria(){
@@ -115,8 +121,12 @@ public class HomeActivity extends AppCompatActivity implements categoriasListene
     }
 
     @Override
-    public void selectSucursales(Sucursales surcursal) {
+    public void selectSucursales(Sucursales sucursal) {
 
+        Intent intent = new Intent(this, ProductosActivity.class);
+        intent.putExtra("nomSucursal", sucursal.getNombre());
+        intent.putExtra("idSucursal", sucursal.getId_sucursal());
+        startActivity(intent);
     }
 
 
@@ -135,4 +145,5 @@ public class HomeActivity extends AppCompatActivity implements categoriasListene
             
         });
     }
+
 }
