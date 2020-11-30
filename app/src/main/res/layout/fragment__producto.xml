@@ -57,7 +57,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="18sp"
             android:layout_marginVertical="5sp"
-            android:hint="Precio" />
+            android:hint="Precio"
+            android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
