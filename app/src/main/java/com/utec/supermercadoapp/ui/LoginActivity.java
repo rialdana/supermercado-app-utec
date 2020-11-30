@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
 
         findViews();
         createDatabase();
-        insertUsers();
+        insertInitialData();
 
         mLoginButton.setOnClickListener(v -> {
             verifyInputs();
@@ -71,10 +71,10 @@ public class LoginActivity extends AppCompatActivity {
         dao = db.supermarketDao();
         categoriasDao = db.categoriasDao();
         sucurslesDao = db.sucurslesDao();
-        productosDao=db.productosDao();
+        productosDao = db.productosDao();
     }
 
-    private void insertUsers() {
+    private void insertInitialData() {
 
         SupermarketRoomDatabase.databaseWriteExecutor.execute(() -> {
 
@@ -88,36 +88,26 @@ public class LoginActivity extends AppCompatActivity {
             Categorias categoria3 = new Categorias("Macotas");
             Categorias categoria4 = new Categorias("Granos Basicos");
 
-            Sucursales sucursal1 = new Sucursales("San Salvador", "1a Calle Poniente. Y 1a Avenida Norte No. 216" ,"2222-5555");
-            Sucursales sucursal2 = new Sucursales("Apopa", "Km. 12 Carretera Troncal del Norte" ,"2222-5555");
+            Sucursales sucursal1 = new Sucursales("San Salvador", "1a Calle Poniente. Y 1a Avenida Norte No. 216", "2222-5555");
+            Sucursales sucursal2 = new Sucursales("Apopa", "Km. 12 Carretera Troncal del Norte", "2222-5555");
 
-            dao.insertUser(adminUser);
-            dao.insertUser(regularUser1);
-            dao.insertUser(regularUser2);
-            dao.insertUser(regularUser3);
+            Productos productos = new Productos("leche", "botella sdsf", 5, 1.50, 1, 1);
 
-            if(categoriasDao.Uno(1) == null) {
+            if (categoriasDao.Uno(1) == null) {
+
                 categoriasDao.Insertar(categoria1);
                 categoriasDao.Insertar(categoria2);
                 categoriasDao.Insertar(categoria3);
                 categoriasDao.Insertar(categoria4);
                 sucurslesDao.Insertar(sucursal1);
                 sucurslesDao.Insertar(sucursal2);
+                dao.insertUser(adminUser);
+                dao.insertUser(regularUser1);
+                dao.insertUser(regularUser2);
+                dao.insertUser(regularUser3);
+                productosDao.Insertar(productos);
+
             }
-
-            Productos productos= new Productos("leche","botella sdsf",5,1.50,1,1);
-            productosDao.Insertar(productos);
-
-
-
-
-
-
-
-
-
-            Log.i("TAG", "get_Lista_Categoria: "+ categoriasDao.Todo().get(0).getCategoria() );
-
         });
 
     }
@@ -129,13 +119,17 @@ public class LoginActivity extends AppCompatActivity {
 
             if (user == null) {
                 showSnackbar("Usuario no encontrado");
-            } else if(user.getUserType() == user.ADMIN) {
-                Intent intent = new Intent(this, HomeActivity.class);
-                startActivity(intent);
             } else {
-                // intent para usuario regular
+                openMainScreen(user.getUserType());
             }
         });
+    }
+
+    private void openMainScreen(int userType) {
+        Intent intent = new Intent(this, HomeActivity.class);
+        intent.putExtra(User.USER_TYPE_TAG, userType);
+        startActivity(intent);
+        finish();
     }
 
     private void showSnackbar(String message) {

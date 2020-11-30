@@ -19,6 +19,7 @@ public class User {
 
     public static final int ADMIN = 0;
     public static final int REGULAR = 1;
+    public static final String USER_TYPE_TAG = "user_type";
 
     public User(@NonNull String username, @NonNull String password, @NonNull int userType) {
         this.username = username;
